@@ -19,7 +19,7 @@ N/A
 
 The deployed site can be found at https://laertxh.github.io/password-generator-challenge
 
-##Credits 
+## Credits 
 
 The HTML and CSS portion of this project was supplied by Colombia University 
 
