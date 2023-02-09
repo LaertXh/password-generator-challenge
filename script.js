@@ -1,8 +1,8 @@
 // our library to create a password 
-var lowercaseChars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var uppercaseChars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var numbersChars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-var symbolsChars = ['!', '@', '#', '$', '%', '&', '*', '(', ')'];  
+var lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+var uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var numbersChars = '0123456789';
+var symbolsChars = '!@#$%&*()';  
   
 
   
@@ -27,7 +27,7 @@ generateBtn.addEventListener("click", writePassword);
 
 //This is where we generate the password
 function generatePassword(){
-  var output = "";
+  var output = "Try Again!";
   
   var length;
   length = getLength();
@@ -35,7 +35,7 @@ function generatePassword(){
   //if length is NULL then the user has clicked cancel so we do not continue any further
   if(length !== null){
 
-    var wantedCharacters = null; // initialized to null in 
+    var wantedCharacters = null; // initialized to null so if its still null after all questions asked then the user said no to all 
     
     //Ask the user what characters they want in their password
     if(confirm("Do you want lower case characters?"))
@@ -47,13 +47,14 @@ function generatePassword(){
     if(confirm("Do you want numbers"))
       wantedCharacters += numbersChars;
     if(wantedCharacters === null){
-      alert("Warning: you need to select at least one.\n\nAborting!.");
-      return;
+      alert("Warning: you need to select at least one.\n\nAborting!");
+      return output;
     }
-      
 
+    //we now have all the necessary requirements to create the password 
+    output =  createPassword(wantedCharacters, length);
+  
   }
-
 
   return output;
 }
@@ -66,17 +67,28 @@ function getLength(){
 
   //if user clicks cancel we exit the function
   if( length === null){
+    console.log("I WANT TO GET OUT");
     return null;
   }
   //using parseInt to determine weather our input is a number, if not tell user to try again and recur the function 
-  else if(  length != parseInt(length, 10) || length < 8 || length > 128 ){
+  else if( length != parseInt(length, 10) || length < 8 || length > 128 ){
      alert("Wrong input, try again or click cancel to exit");
-     length = null; // so if user clicks cancel it exits 
-     getLength(length);
+     length = null; // so if user clicks cancel, it exits 
+     return getLength();
   }
   //we got a correct answer so exit loop 
   else{
     return length;
   }
+}
+
+//create the password using the length provided using the character list provided
+function createPassword(charList, length){
+  var buildPassword = '';
+  for(var i = 0; i < length; i++){
+    buildPassword += charList[Math.floor(Math.random() * charList.length)];
+  }
+
+  return buildPassword;
 }
 
