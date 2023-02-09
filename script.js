@@ -1,8 +1,4 @@
-// our library to create a password 
-var lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
-var uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-var numbersChars = '0123456789';
-var symbolsChars = '!@#$%&*()';  
+ 
   
 
   
@@ -27,8 +23,15 @@ generateBtn.addEventListener("click", writePassword);
 
 //This is where we generate the password
 function generatePassword(){
+
+  // our library to create a password 
+  var lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+  var uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var numbersChars = '0123456789';
+  var symbolsChars = '!@#$%&*()'; 
+
   var output = "Try Again!";
-  
+  //get length from user
   var length;
   length = getLength();
 
