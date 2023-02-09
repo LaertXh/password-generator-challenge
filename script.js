@@ -2,7 +2,7 @@
 var lowercaseChars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var uppercaseChars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numbersChars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-var symbolsChar = ['!', '@', '#', '$', '%', '&', '*', '(', ')'];  
+var symbolsChars = ['!', '@', '#', '$', '%', '&', '*', '(', ')'];  
   
 
   
@@ -35,16 +35,22 @@ function generatePassword(){
   //if length is NULL then the user has clicked cancel so we do not continue any further
   if(length !== null){
 
-    var wantedCharacters;
+    var wantedCharacters = null; // initialized to null in 
     
+    //Ask the user what characters they want in their password
     if(confirm("Do you want lower case characters?"))
-      ;
+      wantedCharacters += lowercaseChars;
     if(confirm("Do you want upper case character?"))
-      ;
+      wantedCharacters += uppercaseChars;
     if(confirm("Do you want symbols?"))
-      ;
+      wantedCharacters += symbolsChars;
     if(confirm("Do you want numbers"))
-      ;
+      wantedCharacters += numbersChars;
+    if(wantedCharacters === null){
+      alert("Warning: you need to select at least one.\n\nAborting!.");
+      return;
+    }
+      
 
   }
 
