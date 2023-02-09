@@ -10,5 +10,9 @@ function writePassword() {
 
 }
 
+function generatePassword(){
+  console.count("WWorking");
+}
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
