@@ -67,7 +67,6 @@ function getLength(){
 
   //if user clicks cancel we exit the function
   if( length === null){
-    console.log("I WANT TO GET OUT");
     return null;
   }
   //using parseInt to determine weather our input is a number, if not tell user to try again and recur the function 
