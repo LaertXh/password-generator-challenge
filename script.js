@@ -1,11 +1,6 @@
- 
-  
-
-  
-// Assignment Code
+ // Assignment Code
 var generateBtn = document.querySelector("#generate");
  
-
 
 // Write password to the #password input
 function writePassword() {
@@ -38,22 +33,27 @@ function generatePassword(){
   //if length is NULL then the user has clicked cancel so we do not continue any further
   if(length !== null){
 
-    var wantedCharacters = null; // initialized to null so if its still null after all questions asked then the user said no to all 
+    var wantedCharacters = ''; // initialized to '' so if its still null after all questions asked then the user said no to all 
     
     //Ask the user what characters they want in their password
-    if(confirm("Do you want lower case characters?"))
+    if(confirm("Do you want lower case characters?")){
       wantedCharacters += lowercaseChars;
-    if(confirm("Do you want upper case character?"))
+    }
+      
+    if(confirm("Do you want upper case character?")){
       wantedCharacters += uppercaseChars;
-    if(confirm("Do you want symbols?"))
+    }
+    if(confirm("Do you want symbols?")){
       wantedCharacters += symbolsChars;
-    if(confirm("Do you want numbers"))
+    }
+    if(confirm("Do you want numbers")){
       wantedCharacters += numbersChars;
-    if(wantedCharacters === null){
+    }
+    if(wantedCharacters === ''){
       alert("Warning: you need to select at least one.\n\nAborting!");
       return output;
     }
-
+    console.log(wantedCharacters);
     //we now have all the necessary requirements to create the password 
     output =  createPassword(wantedCharacters, length);
   
